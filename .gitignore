@@ -1,0 +1,9 @@
+obj/
+bin/
+*.vsidx
+*.v2
+.suo
+.config
+*.bin
+*.lock
+*.config
