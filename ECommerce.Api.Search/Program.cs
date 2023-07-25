@@ -13,9 +13,12 @@ builder.Services.AddScoped<ICustomersService, CustomersService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 
 
+// Add Configuration
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json")
+    .AddEnvironmentVariables()
     .Build();
+
+builder.Services.AddSingleton(configuration);
 
 builder.Services.AddHttpClient("OrdersService", config =>
 {

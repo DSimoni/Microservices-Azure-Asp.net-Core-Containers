@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "ecommerce.api.customers",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "ecommerce.api.customers": "StartDebugging",
+        "ecommerce.api.orders": "StartDebugging",
+        "ecommerce.api.products": "StartDebugging",
+        "ecommerce.api.search": "StartDebugging"
+      }
+    }
+  }
+}
