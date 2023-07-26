@@ -13,13 +13,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build and Test Microservices
-      run: |
-        for folder in src/*; do
-          if [ -d "$folder" ]; then
-            cd "$folder"
-            docker build -t your-docker-registry/your-image-name .
-            docker run your-docker-registry/your-image-name dotnet test --no-restore
-            cd -
-          fi
-        done
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+      with:
+        compose-version: 3.4 # Change to the appropriate version if needed
+
+    - name: Docker Compose Up
+      run: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
