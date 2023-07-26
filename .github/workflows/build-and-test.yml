@@ -16,7 +16,7 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-docker@v2
       with:
-        docker-compose-version:  1.29.2 # Change to the appropriate version if needed
+        docker-compose-version:  1.29.2  # Change to the appropriate version if needed
 
     - name: Show Docker Compose Version
       run: docker-compose --version
