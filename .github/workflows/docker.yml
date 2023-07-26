@@ -1,23 +1,21 @@
-name: Docker
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build-and-test:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: docker build -t your-docker-image-name .
-
-    - name: Test with Docker
-      run: docker run your-docker-image-name dotnet test --no-restore
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        context: ${{ github.workspace }}/docker-files  # Path to the directory containing your Dockerfile
+        push: true
+        tags: your-docker-registry/your-image-name:latest
