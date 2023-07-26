@@ -7,18 +7,19 @@ on:
 
 jobs:
   docker-compose-up:
-    container: docker:20.10.8
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Docker Compose
-      run: docker run --rm -v /usr/local/bin:/target docker/compose:1.29.2 cp /bin/docker-compose /target
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+      with:
+        docker-compose-version:  1.29.2 # Change to the appropriate version if needed
 
     - name: Show Docker Compose Version
       run: docker-compose --version
 
-    - name: Docker Compose Up
+    - name: Build and Run Microservices with Docker Compose
       run: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
