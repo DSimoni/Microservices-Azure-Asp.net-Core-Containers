@@ -16,6 +16,6 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: ${{ github.workspace }}/ECommerce.Api.Customers  # Path to the directory containing your Dockerfile
+        context: ${{ github.workspace }}/ECommerce.Api.Customers/  # Path to the directory containing your Dockerfile
         push: true
         tags: your-docker-registry/your-image-name:latest
