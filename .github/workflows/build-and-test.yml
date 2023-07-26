@@ -14,10 +14,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Docker Compose
-      run: |
-        wget -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)"
-        chmod +x /usr/local/bin/docker-compose
+    - name: Set up Docker Compose
+      run: docker run --rm -v /usr/local/bin:/target docker/compose:1.29.2 cp /bin/docker-compose /target
 
     - name: Show Docker Compose Version
       run: docker-compose --version
