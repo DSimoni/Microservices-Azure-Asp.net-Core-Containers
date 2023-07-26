@@ -18,8 +18,8 @@ jobs:
         for folder in src/*; do
           if [ -d "$folder" ]; then
             cd "$folder"
-            dotnet build
-            dotnet test
+            docker build -t your-docker-registry/your-image-name .
+            docker run your-docker-registry/your-image-name dotnet test --no-restore
             cd -
           fi
         done
