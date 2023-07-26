@@ -1,0 +1,23 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t your-docker-image-name .
+
+    - name: Test with Docker
+      run: docker run your-docker-image-name dotnet test --no-restore
